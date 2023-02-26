@@ -4,14 +4,10 @@ const router = Router();
 
 router.get('/', (req: Request, res: Response, next: NextFunction) => {
 
-    if (!BasicValidationApproved(req)) {res.statusCode = 404; res.render('400/404'); return;};
-    if (!IsLoggedIn(req)) {res.redirect('/login'); return;};
-
-
-    console.log(`You are ${req.session.UsersName}`)
+    console.log(`You were visited`)
 
     res.statusCode = 200;
-    res.render('200/index');
+    res.send("Yo");
 });
 
 export default router;
