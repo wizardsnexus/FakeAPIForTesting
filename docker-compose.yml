@@ -1,0 +1,21 @@
+---
+services:
+  webapp:
+    image: ghcr.io/USER/REPO:TAG
+    ports: 
+      - "3000:3000"
+    restart: unless-stopped
+    networks:
+      - appnet
+  
+  mongo-session-store:
+    image: mongo
+    restart: unless-stopped
+    networks:
+      - appnet
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: username
+      MONGO_INITDB_ROOT_PASSWORD: password
+      
+networks:
+  appnet:
